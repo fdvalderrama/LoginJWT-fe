@@ -1,8 +1,10 @@
+import { BrowserRouter as Router, Routes } from "react-router-dom";
+
 function App() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <p className="text-2xl font-bold">Hola</p>
-    </div>
+    <Router>
+      <Routes></Routes>
+    </Router>
   );
 }
 
