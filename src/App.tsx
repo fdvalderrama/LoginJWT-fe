@@ -1,9 +1,7 @@
+import Login from "./pages/Login";
+
 function App() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <p className="text-2xl font-bold">Hola</p>
-    </div>
-  );
+  return <Login />;
 }
 
 export default App;
