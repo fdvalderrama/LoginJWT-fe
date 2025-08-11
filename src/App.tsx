@@ -1,11 +1,17 @@
-import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import CreateUser from "./pages/CreateUser";
 
 function App() {
   return (
     <Router>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/create-user" element={<CreateUser />} />
+      </Routes>
     </Router>
   );
 }
