@@ -2,7 +2,7 @@ FROM oven/bun:1.2.19 AS build
 
 WORKDIR /app
 
-COPY package.json bun.lock vite.config.ts tsconfig.json ./
+COPY package.json vite.config.ts tsconfig.json ./
 
 RUN bun install
 
