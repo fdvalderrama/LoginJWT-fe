@@ -1,7 +1,10 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import type { LoginRequest } from "../types/LoginRequest";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [loginRequest, setLoginRequest] = useState<LoginRequest>({
     email: "",
     password: "",
@@ -20,7 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5282/api/Login", {
+      const response = await fetch("http://localhost:5282/api/Auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,8 +31,16 @@ const Login = () => {
         body: JSON.stringify(loginRequest),
       });
 
-      const data = await response.json();
+      if (!response.ok) {
+        alert("Credenciales invalidas");
+        return;
+      }
+
+      const data = await response.text();
+      localStorage.setItem("token", data);
+
       console.log(data);
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
