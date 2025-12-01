@@ -66,7 +66,10 @@ const Login = () => {
           value={loginRequest.password}
           onChange={handleChange}
         />
-        <button type="submit" className="bg-blue-500 text-white p-2">
+        <button
+          type="submit"
+          className="bg-blue-500 active:bg-blue-600 text-white p-2 cursor-pointer"
+        >
           Login
         </button>
       </form>
