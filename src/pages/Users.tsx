@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 import type { User } from "../types/User";
+import api from "../api/axiosConfig";
 const Users = () => {
-  const [users, setUsers] = useState<User[]>([
-    {
-      id: 0,
-      name: "",
-      email: "",
-      role: "",
-    },
-  ]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await fetch("http://localhost:5282/api/Users");
-
-        const data = await response.json();
-
-        setUsers(data);
+        const response = await api.get("Users");
+        setUsers(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -25,6 +18,10 @@ const Users = () => {
 
     getUsers();
   }, []);
+
+  if (isLoading) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">

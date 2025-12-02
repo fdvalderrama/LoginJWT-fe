@@ -1,13 +1,24 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../api/useAuth";
+import api from "../api/axiosConfig";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const { isLoading } = useAuth({
-    endpoint: "api/validateToken",
-    isGetMethod: true,
-  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const validateToken = async () => {
+      try {
+        await api.get("validateToken");
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    validateToken();
+  }, []);
 
   const logout = () => {
     localStorage.setItem("token", "");
