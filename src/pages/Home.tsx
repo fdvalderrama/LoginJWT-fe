@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/axiosConfig";
+import api from "../services/axiosConfig";
 import Loading from "../components/Loading";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { User } from "../types/User";
-import api from "../api/axiosConfig";
+import api from "../services/axiosConfig";
 import Loading from "../components/Loading";
 const Users = () => {
   const [isLoading, setIsLoading] = useState(true);
