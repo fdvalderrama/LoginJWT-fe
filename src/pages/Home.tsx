@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosConfig";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,11 +27,7 @@ const Home = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="h-screen flex items-center justify-center">
-        <div className="text-2xl">Cargando...</div>
-      </div>
-    );
+    return <Loading />;
   } else {
     return (
       <div className="h-screen flex flex-col justify-center items-center">

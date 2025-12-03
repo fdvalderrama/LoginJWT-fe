@@ -27,6 +27,9 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
 
       window.location.href = '/';
+    } if(error.response && error.response.status === 403){
+      window.location.href = '/home'
+      alert("No tienes acceso al módulo")
     }
     
     return Promise.reject(error);

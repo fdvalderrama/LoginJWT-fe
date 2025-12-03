@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { User } from "../types/User";
 import api from "../api/axiosConfig";
+import Loading from "../components/Loading";
 const Users = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
@@ -20,7 +21,7 @@ const Users = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Cargando...</div>;
+    return <Loading />;
   }
 
   return (
